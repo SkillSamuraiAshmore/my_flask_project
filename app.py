@@ -1,11 +1,20 @@
 from flask import Flask,render_template
-# from flask_SQLAlchemy import SQLAchemy
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+  
 app = Flask(__name__)
-print(app)
-# app.config('SQLAchemy_DATABASE_URI') = 'sqlite:///yourdatabase.db'
-# app.config('SECRET_KEY') = 'ba3f1b3757412c098d3215e2cb0d31716634c2dcfb1a1f57'
-# db = SQLAlchemy(app)
+# print(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///yourdatabase.db'
+app.config['SECRET_KEY'] = 'ba3f1b3757412c098d3215e2cb0d31716634c2dcfb1a1f57'
+db = SQLAlchemy(app)
+migrate = Migrate(app,db)
 
+class Task(db.Model):
+  id = db.Column(db.Integer, primary_key = True)
+  title = db.Column(db.String(100), nullable = False)
+  description = db.Column(db.String(200), nullable = True)
+  is_complete = db.Column(db.Boolean, default = False)
+  
 @app.route('/')
 def hello_world():
   return 'Hello World!'
