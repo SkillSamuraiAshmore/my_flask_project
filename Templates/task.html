@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <body>   
+      <form method = "POST" action="">
+    <p>
+      <span style="color:red;">[{{  error  }}]</span>
+      {% endfor %}
+
+    </p>
+    <p>
+        {{  form.is_complete()  }}  {{  form.is_complete.label  }}
+        {{  form.description(cols=32,rows=4)  }}</span>
+        {% endfor %}
+      </p>
+      <p>
+          {{  form.is_complete() }} {{  form.is_complete.label  }}
+        </p>
+        <p> {{ form.submit }}</p>
+      </form> 
+</html>
