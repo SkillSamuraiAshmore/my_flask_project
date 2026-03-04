@@ -20,6 +20,7 @@ class Task(db.Model):
   
 class TaskForm(FlaskForm):
   title = StringField('Title', validators=[InputRequired(), Length(min=1, max=200)])
+  description = TextAreaField('Description', validators=[Length(min=0, max=200)])
   is_complete = BooleanField('Completed')
   submit = SubmitField('Submit')
 

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
+    <head>   
+      <title>Task Form</title>
+    </head>
     <body>   
       <form method = "POST" action="">
-    <p>
-      <span style="color:red;">[{{  error  }}]</span>
-      {% endfor %}
-
-    </p>
-    <p>
-        {{  form.is_complete()  }}  {{  form.is_complete.label  }}
-        {{  form.description(cols=32,rows=4)  }}</span>
-        {% endfor %}
-      </p>
-      <p>
-          {{  form.is_complete() }} {{  form.is_complete.label  }}
+        <p>
+          {{ form.title.label }}<br>
+          {{ form.title() }} <br>
+          {% for error in form.title.errors %}
+            <span style="color:red;">[{{  error  }}]
+          {% endfor %}
+        </p>
+        <p>
         </p>
         <p> {{ form.submit }}</p>
       </form> 
+    </body>
 </html>
