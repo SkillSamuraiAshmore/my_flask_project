@@ -29,6 +29,13 @@ class TaskForm(FlaskForm):
 def task():
   form = TaskForm()
   if form.validate_on_submit():
+      new_task = Task(
+        title = form.title.data
+        description = form.description.data
+        is_complete = form.is_complete.data
+      )
+      db.session.add(new_task)
+      db.session.commit
     return redirect(url_for('hello_world'))
   return render_template('task.html', form = form)
 
